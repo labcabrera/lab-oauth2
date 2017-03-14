@@ -1,0 +1,110 @@
+buildscript {
+	ext {
+		springBootVersion = "1.5.2.RELEASE"		
+		springCloudVersion = "1.1.7.RELEASE"
+		springCloudEurekaVersion = "1.2.5.RELEASE"
+		lombokVersion = "1.16.14"
+		cucumberVersion = "1.2.4"
+		webjarsBootstrapVersion = "3.3.7"
+		webjarsJqueryVersion = "3.1.1-1"
+		webjarsAngularVersion = "1.6.0"
+		webjarsAngularUiBootstrapVersion = "2.2.0"
+		springfoxSwaggerVersion = "2.6.1"
+		swaggerAnnotationVersion = "1.5.10"
+	}
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		maven {
+			url "http://repo.spring.io/release"
+			url "http://repo.spring.io/snapshot"
+			url "http://repo.spring.io/milestone"
+		}
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+group = "org.lab.oauth"
+version = version
+
+subprojects {
+	apply plugin: "java"
+	apply plugin: "eclipse"
+	apply plugin: "org.springframework.boot"
+	compileJava {
+		sourceCompatibility = 1.8
+		targetCompatibility = 1.8
+		options.encoding = "UTF-8"
+	}
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		maven {
+			url "http://repo.spring.io/release"
+			url "http://repo.spring.io/snapshot"
+			url "http://repo.spring.io/milestone"
+		}
+	}
+}
+
+configure(project(":oauth2-authserver")) {
+	dependencies {
+		compile([
+			"org.springframework.boot:spring-boot-starter-security",
+			"org.springframework.boot:spring-boot-starter-web",
+			"org.springframework.boot:spring-boot-starter-freemarker",
+			"org.springframework.boot:spring-boot-starter-actuator"
+		])
+		compile([
+			"org.springframework.security.oauth:spring-security-oauth2",
+			"org.springframework.security:spring-security-jwt"
+		])
+		compile([
+			"org.webjars:bootstrap:3.3.7-1",
+			"org.webjars.bower:angular:1.4.9"
+		])
+		testCompile([
+			"org.springframework.boot:spring-boot-starter-test",
+			"org.apache.httpcomponents:httpclient"
+		])
+	}
+}
+
+configure(project(":oauth2-resource")) {
+	dependencies {
+		compile([
+			"org.springframework.boot:spring-boot-starter-web",
+			"org.springframework.boot:spring-boot-starter-security",
+			"org.springframework.security.oauth:spring-security-oauth2",
+			"org.springframework.security:spring-security-jwt"
+		])
+		testCompile([
+			"org.springframework.boot:spring-boot-starter-test",
+			"org.apache.httpcomponents:httpclient"
+		])
+	}
+}
+
+configure(project(":oauth2-ui")) {
+	dependencies {
+		compile([
+			"org.springframework.cloud:spring-cloud-starter-zuul:1.2.6.RELEASE",
+			"org.springframework.cloud:spring-cloud-starter-oauth2:1.1.3.RELEASE",
+			"org.springframework.boot:spring-boot-starter-security",
+			"org.springframework.boot:spring-boot-starter-web",
+			"org.springframework.security.oauth:spring-security-oauth2",
+			"org.springframework.security:spring-security-jwt"
+		])
+		compile([
+			"org.webjars:bootstrap:3.3.7-1",
+			"org.webjars.bower:angular:1.4.9",
+			"org.webjars.bower:angular-route:1.4.9"
+		])
+		testCompile([
+			"org.springframework.boot:spring-boot-starter-test",
+			"org.apache.httpcomponents:httpclient"
+		])
+	}
+}

@@ -1,2 +1,4 @@
-rootProject.name = "oauth2"
-include ":oauth2-authserver", ":oauth2-resource", ":oauth2-ui"
+include ":oauth-server"
+include ":oauth-resource"
+include ":oauth-ui"
+include ":oauth-ui-implicit"

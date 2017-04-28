@@ -1,0 +1,9 @@
+server:
+  port: 8081
+
+management:
+  context-path: /actuator
+  security.enabled: false
+
+logging:
+  level.org: INFO

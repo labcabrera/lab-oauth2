@@ -1,0 +1,12 @@
+server:
+  contextPath: /spring-security-oauth-resource
+  port: 8082
+
+management:
+  context-path: /actuator
+  security.enabled: false
+
+logging:
+  level.org=INFO
+
+#endpoints.cors.allowed-origins=*

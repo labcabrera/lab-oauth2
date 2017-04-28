@@ -1,4 +1,4 @@
-package org.baeldung.live;
+package org.lab.oauth.ui.live;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -6,12 +6,14 @@ import static org.junit.Assert.assertNotNull;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 
+@Ignore
 public class AuthorizationLiveTest {
 
 	@Test

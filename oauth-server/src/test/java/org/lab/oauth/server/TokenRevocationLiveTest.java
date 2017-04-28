@@ -5,11 +5,13 @@ import static org.junit.Assert.assertNotNull;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 
+@Ignore
 public class TokenRevocationLiveTest {
 
 	private String refreshToken;

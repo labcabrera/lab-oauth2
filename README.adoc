@@ -1,0 +1,5 @@
+= OAuth2 - Spring Integration
+
+image:https://travis-ci.org/labcabrera/lab-oauth2.svg?branch=master["Build Status", link="https://travis-ci.org/labcabrera/lab-oauth2"]
+
+OAuth2 basic example.

@@ -30,37 +30,11 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
 				.authorizeRequests().anyRequest().permitAll();
 	}
 
-	// Remote token service
-	/*
-	 * @Primary
-	 * 
-	 * @Bean public RemoteTokenServices tokenService() { final
-	 * RemoteTokenServices tokenService = new RemoteTokenServices();
-	 * tokenService.setCheckTokenEndpointUrl(
-	 * "http://localhost:8081/spring-security-oauth-server/oauth/check_token");
-	 * tokenService.setClientId("fooClientIdPassword");
-	 * tokenService.setClientSecret("secret"); return tokenService; }
-	 */
-
-	// JWT token store
-
 	@Override
 	public void configure(final ResourceServerSecurityConfigurer config) {
 		config.tokenServices(tokenServices());
 	}
 
-	/*
-	 * @Bean public TokenStore tokenStore() { return new
-	 * JwtTokenStore(accessTokenConverter()); }
-	 * 
-	 * @Bean public JwtAccessTokenConverter accessTokenConverter() { final
-	 * JwtAccessTokenConverter converter = new JwtAccessTokenConverter(); //
-	 * converter.setSigningKey("123"); final Resource resource = new
-	 * ClassPathResource("public.txt"); String publicKey = null; try { publicKey
-	 * = IOUtils.toString(resource.getInputStream()); } catch (final IOException
-	 * e) { throw new RuntimeException(e); }
-	 * converter.setVerifierKey(publicKey); return converter; }
-	 */
 	@Bean
 	@Primary
 	public DefaultTokenServices tokenServices() {

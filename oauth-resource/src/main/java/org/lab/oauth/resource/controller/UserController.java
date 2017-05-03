@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class UserController {
+
 	@Autowired
 	private TokenStore tokenStore;
 
@@ -24,7 +28,7 @@ public class UserController {
 	public Map<String, Object> getExtraInfo(OAuth2Authentication auth) {
 		final OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) auth.getDetails();
 		final OAuth2AccessToken accessToken = tokenStore.readAccessToken(details.getTokenValue());
-		System.out.println(accessToken);
+		log.debug("Access token: {}", accessToken);
 		return accessToken.getAdditionalInformation();
 	}
 }

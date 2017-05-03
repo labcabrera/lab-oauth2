@@ -31,3 +31,7 @@ insert into authorities (
 	username,authority)
 values (
 	'john','USER');
+insert into authorities (
+	username,authority)
+values (
+	'john','ROLE_ADMIN');
